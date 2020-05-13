@@ -59,7 +59,15 @@
 						<div class="user-panel">
 							<div class="up-item">
 								<i class="flaticon-profile"></i>
-								<a href="#">Sign</a> In or <a href="#">Create Account</a>
+								@guest
+								<a href="{{ route('login') }}">{{ __('Sign') }}</a> In or 
+								<a href="{{ route('register') }}">{{ __('Create Account') }}</a>
+								@else
+								<a href="{{ route('logout') }}">{{ __('Logout') }}</a>
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+									@csrf
+							</form>
+							@endguest
 							</div>
 							<div class="up-item">
 								<div class="shopping-card">

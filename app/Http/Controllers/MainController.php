@@ -9,7 +9,7 @@ class MainController extends Controller
 {
     public function index()
     {
-        return view('index', [
+        return view('layouts._header', [
             'menus' => Menu::with('children')->where('parent_id', '0')->get(),
         ]);
     }
