@@ -60,14 +60,17 @@
 							<div class="up-item">
 								<i class="flaticon-profile"></i>
 								@guest
-								<a href="{{ route('login') }}">{{ __('Sign') }}</a> In or 
-								<a href="{{ route('register') }}">{{ __('Create Account') }}</a>
+									<a href="{{ route('login') }}">{{ __('Sign') }}</a> In or 
+									<a href="{{ route('register') }}">{{ __('Create Account') }}</a>
 								@else
-								<a href="{{ route('logout') }}">{{ __('Logout') }}</a>
-								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-									@csrf
-							</form>
-							@endguest
+									<a href="{{ route('logout') }}"
+									onclick="event.preventDefault();
+																document.getElementById('logout-form').submit();">
+									 {{ __('Logout') }}</a>
+									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+										@csrf
+									</form>
+								@endguest
 							</div>
 							<div class="up-item">
 								<div class="shopping-card">

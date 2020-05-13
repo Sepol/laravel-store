@@ -16,13 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('/')->group(function(){
     Route::name('index')->get('/', ['uses' => 'MainController@index'], function(){});
     });
-
+/*
 Route::name('auth::')->prefix('auth')->group(function(){
     Route::name('view')->get('auth_view', ['uses' => 'upgr@authview'], function(){});
     Route::name('act_auth')->post('act_auth', ['uses' => 'upgr@act_auth'], function(){});
     Route::name('logout')->get('logout', ['uses' => 'upgr@logout'], function(){});
 });
-
+*/
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
