@@ -61,7 +61,7 @@
 								<i class="flaticon-profile"></i>
 								@guest
 									<a href="{{ route('login') }}">{{ __('Sign') }}</a> In or 
-									<a href="{{ route('register') }}">{{ __('Create Account') }}</a>
+									<a href="{{ route('login') }}">{{ __('Create Account') }}</a>
 								@else
 									<a href="{{ route('logout') }}"
 									onclick="event.preventDefault();

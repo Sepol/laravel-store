@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/')->group(function(){
     Route::name('index')->get('/', ['uses' => 'MainController@index'], function(){});
+    Route::name('home')->get('/home', ['uses' => 'HomeController@index'], function(){});
     });
 /*
 Route::name('auth::')->prefix('auth')->group(function(){

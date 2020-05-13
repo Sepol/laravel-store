@@ -1,71 +1,78 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Авторизоваться') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+<div class="nav">
+    <ul class="links">
+      <li class="signin-active"><a class="btn">{{ __('Вход') }} </a></li>
+      <li class="signup-inactive"><a class="btn">{{ __('Регистрация') }} </a></li>
+    </ul>
+  </div>
+  <div ng-app ng-init="checked = false">
 
-                        <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
+    {{-- Login form --}}
+    <form class="form-signin" action="{{ route('login') }}" method="POST" name="form">
+      @csrf
+      <label for="email">{{ __('E-Mail') }}</label>
+      <input id="email" type="text" class="form-styling{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" type="email" value="{{ old('email') }}" required autofocus />
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Пароль') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Запомнить меня') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Войти') }}
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Забыли пароль?') }}
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+        @if ($errors->has('email'))
+            <div>
+                <strong>{{ $errors->first('email') }}</strong>
             </div>
-        </div>
-    </div>
-</div>
+        @endif
+    
+      <label for="password">{{ __('Пароль') }}</label>
+      <input id="password" type="password"  class="form-styling{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required />
+
+        @if ($errors->has('password'))
+            <div >
+                <strong>{{ $errors->first('password') }}</strong>
+            </div>
+        @endif
+      
+      <button class="btn-animate btn-signin" type="submit">{{ __('Войти') }}</button>
+    </form>
+    {{-- End login form --}}
+
+    {{-- Register form --}}
+    <form class="form-signup" action="{{ route('register') }}" method="post" name="form">
+      @csrf
+      <label for="name">{{ __('Имя') }}</label>
+      <input id="name" type="text" class="form-styling{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="" required autofocus/>
+
+      @if ($errors->has('name'))
+          <div>
+              <strong>{{ $errors->first('name') }}</strong>
+          </div>
+      @endif
+
+      <label for="email">{{ __('Email') }}</label>
+      <input id="email" type="email" class="form-styling{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="" required/>
+
+        @if ($errors->has('email'))
+            <div>
+                <strong>{{ $errors->first('email') }}</strong>
+            </div>
+        @endif
+
+      <label for="password">{{ __('Пароль') }}</label>
+      <input id="password" type="password" class="form-styling{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="" required/>
+
+        @if ($errors->has('password'))
+            <div>
+                <strong>{{ $errors->first('password') }}</strong>
+            </div>
+        @endif
+
+      <label for="password-confirm">{{ __('Повторите пароль') }}</label>
+      <input id="password-confirm" type="password" class="form-styling" name="password_confirmation" 
+      placeholder="" required>
+
+        <button type="submit" class="btn-signup">{{ __('Зарегистрироваться') }}</button>
+    </form>
+    {{-- End register form --}}
+  </div>
+
+
 @endsection
