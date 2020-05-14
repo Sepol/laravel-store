@@ -27,9 +27,13 @@
                         <a href="#" class="x-navigation-control"></a>
                     </li>
                     <li class="xn-title">Navigation</li>
+
                     <li>
-                        <a href="{{ route('admin::index') }}"><span class="fa fa-desktop"></span> <span class="xn-text">Товары</span></a>                        
-                    </li>                    
+                        <a href="{{ route('admin.product.index') }}"><span class="fa fa-desktop"></span> <span class="xn-text">Товары</span></a>                        
+                    </li>  
+                    <li>
+                        <a href="{{ route('admin.category.index') }}"><span class="fa fa-desktop"></span> <span class="xn-text">Категории</span></a>                        
+                    </li>                  
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-file-text-o"></span> <span class="xn-text">Layouts</span></a>
                         <ul>
@@ -72,20 +76,11 @@
                     <!-- END SIGN OUT -->
                     
                 </ul>
-                <!-- END X-NAVIGATION VERTICAL -->                    
-                
-                <!-- START BREADCRUMB -->
-                <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Layouts</a></li>
-                    <li class="active">Top Navigation Fixed</li>
-                </ul>
-                <!-- END BREADCRUMB -->                
+                <!-- END X-NAVIGATION VERTICAL -->                                
                 
                 <!-- PAGE TITLE -->
                 <div class="page-title">                    
-                    <h2><span class="fa fa-arrow-circle-o-left"></span> Top Navigation Fixed</h2>
-                    <div class="text-right"><a class="btn btn-danger" href="{{route('admin::create')}}">Создать новость</a></div>
+                    
                 </div>                                   
                 <!-- END PAGE TITLE -->
                 
@@ -128,6 +123,11 @@
         <script type="text/javascript" src="{{ asset ('assets/admin/js/plugins.js') }}"></script>        
         <script type="text/javascript" src="{{ asset ('assets/admin/js/actions.js') }}"></script>        
         <!-- END TEMPLATE -->
+        <script src="{{ asset ('ckeditor/ckeditor.js') }}"></script>
+        <script>
+            CKEDITOR.replace('description_short');
+            CKEDITOR.replace('description');
+        </script>
     <!-- END SCRIPTS -->        
     </body>
 </html>

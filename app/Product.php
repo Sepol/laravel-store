@@ -27,6 +27,12 @@ class Product extends Model
         $this->attributes['slug'] = Str::slug( mb_substr($this->attributes['title'], 0, 40) . "-" . \Carbon\Carbon::now()->format('dmyHi'), '-');
     }
 
+    // Polymorphic relation with categories
+    public function categories()
+    {
+      return $this->morphToMany('App\Category', 'categoryable');
+    }
+
     public function scopeLastProducts($query, $count) {
         return $query->orderBy('created_at', 'desc')->take($count)->get();
     }

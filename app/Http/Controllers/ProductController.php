@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
@@ -14,8 +16,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.index', [
-            'products' => Product::orderBy('created_at', 'desc')->paginate(16)
+        return view('admin.product.index', [
+            'products' => Product::orderBy('created_at', 'desc')->paginate(4)
         ]);
     }
 
@@ -26,8 +28,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.create', [
+        return view('admin.product.create', [
             'product' => [],
+            'categories' => Category::with('children')->where('parent_id', 0)->get(),
             'delimiter' => ''
         ]);
     }
@@ -41,7 +44,13 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = Product::create($request->all());
-        return redirect()->route('admin::index');
+
+        // Categories
+        if($request->input('categories')) :
+            $product->categories()->attach($request->input('categories'));
+        endif;
+
+        return redirect()->route('admin.product.index');
     }
 
     /**
@@ -63,9 +72,10 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('admin.edit', [
-            'product' => $product,
-            'delimiter' => ''
+        return view('admin.product.edit', [
+            'product'    => $product,
+            'categories' => Category::with('children')->where('parent_id', 0)->get(),
+            'delimiter'  => ''
         ]);
     }
 
@@ -79,7 +89,14 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $product->update($request->except('slug'));
-        return redirect()->route('admin::index');
+
+        // Categories
+        $product->categories()->detach();
+        if($request->input('categories')) :
+          $product->categories()->attach($request->input('categories'));
+        endif;
+
+        return redirect()->route('admin.product.index');
     }
 
     /**
@@ -90,7 +107,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        $product->categories()->detach();
         $product->delete();
-        return redirect()->route('admin::index');
+        
+        return redirect()->route('admin.product.index');
     }
 }

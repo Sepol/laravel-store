@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('admin.home', [
+            'categories' => Category::lastCategories(5),
+            'products' => Product::lastProducts(5),
+            'count_categories' => Category::count(),
+            'count_products' => Product::count()
+          ]);
     }
 }

@@ -17,9 +17,8 @@ Auth::routes();
 
 Route::prefix('/')->group(function(){
     Route::name('index')->get('/', 'MainController@index');
-    Route::name('home')->get('/home', 'HomeController@index');
     });
-
+/*
 Route::name('admin::')->prefix('admin')->group(function () {
     Route::name('index')->get('index', 'ProductController@index');
     Route::name('create')->get('create', 'ProductController@create');
@@ -28,6 +27,12 @@ Route::name('admin::')->prefix('admin')->group(function () {
     Route::name('update')->post('update{product}', 'ProductController@update');
     Route::name('destroy')->delete('destroy{product}', 'ProductController@destroy');
     });
+*/
+Route::prefix('admin')->middleware('auth')->group(function() {
+    Route::name('home')->get('/home', 'HomeController@index');
+    Route::resource('/category', 'CategoryController', ['as'=>'admin']);
+    Route::resource('/product', 'ProductController', ['as'=>'admin']);
+});
     
 /*
 Route::name('auth::')->prefix('auth')->group(function(){
