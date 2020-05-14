@@ -63,6 +63,7 @@
 									<a href="{{ route('login') }}">{{ __('Sign') }}</a> In or 
 									<a href="{{ route('login') }}">{{ __('Create Account') }}</a>
 								@else
+									<a href="{{ route('home') }}">{{ Auth::user()->name }}</a> /
 									<a href="{{ route('logout') }}"
 									onclick="event.preventDefault();
 																document.getElementById('logout-form').submit();">

@@ -13,10 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
 Route::prefix('/')->group(function(){
-    Route::name('index')->get('/', ['uses' => 'MainController@index'], function(){});
-    Route::name('home')->get('/home', ['uses' => 'HomeController@index'], function(){});
+    Route::name('index')->get('/', 'MainController@index');
+    Route::name('home')->get('/home', 'HomeController@index');
     });
+
+Route::name('admin::')->prefix('admin')->group(function () {
+    Route::name('index')->get('index', 'ProductController@index');
+    Route::name('create')->get('create', 'ProductController@create');
+    Route::name('edit')->get('edit{product}', 'ProductController@edit');
+    Route::name('store')->post('store', 'ProductController@store');
+    Route::name('update')->post('update{product}', 'ProductController@update');
+    Route::name('destroy')->delete('destroy{product}', 'ProductController@destroy');
+    });
+    
 /*
 Route::name('auth::')->prefix('auth')->group(function(){
     Route::name('view')->get('auth_view', ['uses' => 'upgr@authview'], function(){});
@@ -24,6 +36,4 @@ Route::name('auth::')->prefix('auth')->group(function(){
     Route::name('logout')->get('logout', ['uses' => 'upgr@logout'], function(){});
 });
 */
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
