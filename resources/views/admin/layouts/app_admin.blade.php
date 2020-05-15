@@ -23,7 +23,7 @@
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="{{ route('index') }}">На сайт</a>
+                        <a href="{{ route('static::index') }}">На сайт</a>
                         <a href="#" class="x-navigation-control"></a>
                     </li>
                     <li class="xn-title">Navigation</li>

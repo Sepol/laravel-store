@@ -45,7 +45,7 @@
 				<div class="row">
 					<div class="col-lg-2 text-center text-lg-left">
 						<!-- logo -->
-						<a href="{{ route ('index') }}" class="site-logo">
+						<a href="{{ route ('static::index') }}" class="site-logo">
 							<img src="{{ asset ('assets/img/logo.png') }}" alt="">
 						</a>
 					</div>

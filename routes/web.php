@@ -15,11 +15,24 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::prefix('/')->group(function(){
+Route::name('static::')->prefix('/')->group(function(){
     Route::name('index')->get('/', 'MainController@index');
-    Route::name('category')->get('/category/{slug?}', 'MainController@category');
-    Route::name('product')->get('/product/{slug?}', 'MainController@product');
-    });
+    Route::name('product')->get('product', 'MainController@product');
+    Route::name('category')->get('category', 'MainController@category');
+    Route::name('cart')->get('cart', 'MainController@cart');
+    Route::name('checkout')->get('checkout', 'MainController@checkout');
+    Route::name('contact')->get('contact', 'MainController@contact');
+    /* Страницы с заглушкой */
+    Route::name('women')->get('redirect', 'MainController@women');
+    Route::name('men')->get('redirect', 'MainController@men');
+    Route::name('jewelry')->get('redirect', 'MainController@jewelry');
+    Route::name('sneakers')->get('redirect', 'MainController@sneakers');
+    Route::name('sandals')->get('redirect', 'MainController@sandals');
+    Route::name('shoes')->get('redirect', 'MainController@shoes');
+    Route::name('boots')->get('redirect', 'MainController@boots');
+    Route::name('flops')->get('redirect', 'MainController@flops');
+    Route::name('blog')->get('redirect', 'MainController@blog');
+});
 /*
 Route::name('admin::')->prefix('admin')->group(function () {
     Route::name('index')->get('index', 'ProductController@index');

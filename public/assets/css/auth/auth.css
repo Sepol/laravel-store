@@ -5,12 +5,12 @@ body {
     -webkit-linear-gradient(
     rgba(246,247,249,0.2),
     rgba(246,247,249,0.2)),
-    url(https://funart.pro/uploads/posts/2020-03/1584642795_4-p-foni-dlya-magazinov-odezhdi-9.jpg) no-repeat center center fixed;
+    url(../../img/bg-login.jpg) no-repeat center center fixed;
   background:
     linear-gradient(
     rgba(246, 247, 249, 0.2),
     rgba(246,247,249,0.2)),
-    url(https://funart.pro/uploads/posts/2020-03/1584642795_4-p-foni-dlya-magazinov-odezhdi-9.jpg) no-repeat center center fixed;
+    url(../../img/bg-login.jpg) no-repeat center center fixed;
   background-size: cover;
 }
 
