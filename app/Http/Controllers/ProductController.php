@@ -50,7 +50,10 @@ class ProductController extends Controller
             $product->categories()->attach($request->input('categories'));
         endif;
 
-        return redirect()->route('admin.product.index');
+        // Image
+        $path = $request->file('image')->store('uploads', 'public');
+
+        return redirect()->route('admin.product.index', ['path' => $path]);
     }
 
     /**

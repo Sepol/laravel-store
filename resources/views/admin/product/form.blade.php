@@ -1,6 +1,6 @@
 <div class="container">
 
-  <label for="">Статус</label>
+  <label for="published">Статус</label>
   <select class="form-control" name="published">
     @if (isset($product->id))
       <option value="0" @if ($product->published == 0) selected="" @endif>Не опубликовано</option>
@@ -11,41 +11,42 @@
     @endif
   </select>
 
-  <label for="">Заголовок</label>
+  <label for="title">Заголовок</label>
   <input type="text" class="form-control" name="title" placeholder="Заголовок новости"
          value="{{$product->title ?? ""}}"
          required autofocus>
 
-  <label for="">Slug (Уникальное значение)</label>
+  <label for="slug">Slug (Уникальное значение)</label>
   <input class="form-control" type="text" name="slug" placeholder="Автоматическая генерация"
          value="{{$product->slug ?? ""}}" readonly="">
 
-  <label for="">Родительская категория</label>
+  <label for="categories[]">Родительская категория</label>
   <select class="form-control" name="categories[]" multiple="">
     @include('admin.product.categories', ['categories' => $categories])
   </select>
 
-  <label for="">Краткое описание</label>
+  <label for="description_short">Краткое описание</label>
   <textarea class="form-control" id="description_short"
             name="description_short">{{$product->description_short ?? ""}}</textarea>
 
-  <label for="">Полное описание</label>
+  <label for="description">Полное описание</label>
   <textarea class="form-control" id="description" name="description">{{$product->description ?? ""}}</textarea>
          
-  <label for="">Изображение</label>
-  <input type="file" multiple name="file[]" value="{{ $product->image ?? "" }}">
+
+  <label for="image">Изображение</label>
+  <input type="file" name="image" value="{{ $product->image ?? "" }}">
 
   <hr/>
 
-  <label for="">Мета заголовок</label>
+  <label for="meta_title">Мета заголовок</label>
   <input type="text" class="form-control" name="meta_title" placeholder="Мета заголовок"
          value="{{$product->meta_title ?? ""}}">
 
-  <label for="">Мета описание</label>
+  <label for="meta_description">Мета описание</label>
   <input type="text" class="form-control" name="meta_description" placeholder="Мета описание"
          value="{{$product->meta_description ?? ""}}">
 
-  <label for="">Ключевые слова</label>
+  <label for="meta_keyword">Ключевые слова</label>
   <input type="text" class="form-control" name="meta_keyword" placeholder="Ключевые слова, через запятую"
          value="{{$product->meta_keyword ?? ""}}">
 

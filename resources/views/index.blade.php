@@ -171,14 +171,9 @@
 				<h2>BROWSE TOP SELLING PRODUCTS</h2>
 			</div>
 			<ul class="product-filter-menu">
-				<li><a href="#">TOPS</a></li>
-				<li><a href="#">JUMPSUITS</a></li>
-				<li><a href="#">LINGERIE</a></li>
-				<li><a href="#">JEANS</a></li>
-				<li><a href="#">DRESSES</a></li>
-				<li><a href="#">COATS</a></li>
-				<li><a href="#">JUMPERS</a></li>
-				<li><a href="#">LEGGINGS</a></li>
+				@foreach($categories as $category)
+				<li><a href="#">{{ $category->title }}</a></li>
+				@endforeach
 			</ul>
 			<div class="row">
 				@foreach($products as $product)
@@ -186,6 +181,11 @@
 					<div class="product-item">
 						<div class="pi-pic">
 							<img src="{{ asset ('assets/img/product/5.jpg') }}" alt="">
+							{{--
+							@isset($path)
+								<img src="{{ asset ('/storage/' . $path) }}" alt="">
+							@endisset
+							--}}
 							<div class="pi-links">
 								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
 								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>

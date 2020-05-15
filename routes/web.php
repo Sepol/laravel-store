@@ -17,6 +17,8 @@ Auth::routes();
 
 Route::prefix('/')->group(function(){
     Route::name('index')->get('/', 'MainController@index');
+    Route::name('category')->get('/category/{slug?}', 'MainController@category');
+    Route::name('product')->get('/product/{slug?}', 'MainController@product');
     });
 /*
 Route::name('admin::')->prefix('admin')->group(function () {
@@ -32,6 +34,7 @@ Route::prefix('admin')->middleware('auth')->group(function() {
     Route::name('home')->get('/home', 'HomeController@index');
     Route::resource('/category', 'CategoryController', ['as'=>'admin']);
     Route::resource('/product', 'ProductController', ['as'=>'admin']);
+    Route::resource('/user', 'UserController', ['as' => 'admin']);
 });
     
 /*

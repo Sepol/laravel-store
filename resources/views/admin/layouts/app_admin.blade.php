@@ -33,15 +33,18 @@
                     </li>  
                     <li>
                         <a href="{{ route('admin.category.index') }}"><span class="fa fa-desktop"></span> <span class="xn-text">Категории</span></a>                        
-                    </li>                  
-                    <li class="xn-openable">
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.user.index') }}"><span class="fa fa-desktop"></span> <span class="xn-text">Пользователи</span></a>                        
+                    </li>
+                    {{--<li class="xn-openable">
                         <a href="#"><span class="fa fa-file-text-o"></span> <span class="xn-text">Layouts</span></a>
                         <ul>
                             <li class="active"><a href="#">Top Navigation Fixed</a></li>
                             <li><a href="#">Custom Navigation</a></li>
                             <li><a href="#">Frame Left Column</a></li>
                         </ul>
-                    </li>
+                    </li>--}}
                     
                 </ul>
                 <!-- END X-NAVIGATION -->

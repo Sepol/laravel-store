@@ -3,7 +3,7 @@
 @section('content')
 
     <form action="{{route('admin.product.store')}}" class="form-horizontal" method="post" enctype="multipart/form-data">
-        {{ csrf_field() }}
+        @csrf
 
         {{-- Form iclude --}}
         @include('admin.product.form')

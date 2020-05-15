@@ -13,7 +13,7 @@
     </div>
     <div class="col-sm-3">
       <div class="jumbotron">
-        <p><span class="label label-primary">Материалов {{$count_products}}</span></p>
+        <p><span class="label label-primary">Товаров {{$count_products}}</span></p>
       </div>
     </div>
     <div class="col-sm-3">
@@ -41,7 +41,7 @@
       @endforeach
     </div>
     <div class="col-sm-6">
-      <a class="btn btn-block btn-default" href="#">Создать материал</a>
+      <a class="btn btn-block btn-default" href="{{route('admin.product.create')}}">Создать товар</a>
       @foreach ($products as $product)
         <a class="list-group-item" href="{{route('admin.product.edit', $product)}}">
           <h4 class="list-group-item-heading">{{$product->title}}</h4>
